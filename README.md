@@ -1,6 +1,7 @@
 ## Introduction
 
-**qphire/phmwgs** is a bioinformatics pipeline that ...
+**qphire/phmwgs** is a general bioinformatics pipeline used by Public Health Microbiology, Queensland Health for WGS data analyis, storage on AWS S3.
+It based on modules/template from nf-core.
 
 <!-- TODO nf-core:
    Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
