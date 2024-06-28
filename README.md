@@ -45,10 +45,7 @@ Now, you can run the pipeline using:
 <!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
-nextflow run qphire/phmwgs \
-   -profile <docker/singularity/.../institute> \
-   --input samplesheet.csv \
-   --outdir <OUTDIR>
+nextflow run main.nf -c conf/phm_routine.config --input ~/test/qc/input.csv --krakendb /data/dbs/kraken_db/ -profile aws --awsProfile genfssphmdev -bucket-dir "s3://s3-gen-dev-data-fss/nextflow_cache" -name testchoi
 ```
 
 :::warning
@@ -57,9 +54,6 @@ provided by the `-c` Nextflow option can be used to provide any configuration _*
 see [docs](https://nf-co.re/usage/configuration#custom-configuration-files).
 :::
 
-```bash
-nextflow run main.nf  --input ~/test/qc/samplesheet.csv --krakendb /data/dbs/kraken_db/ -profile aws --awsProfile genfssphmdev -bucket-dir "s3://s3-gen-dev-data-fss/nextflow_cache"
-```
 
 ## Credits
 

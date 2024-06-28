@@ -1,0 +1,2 @@
+id,lane,samplesheet,flowcell
+test,,flowcell_samplesheet.csv,flowcell.tar.gz
