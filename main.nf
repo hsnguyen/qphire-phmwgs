@@ -21,7 +21,7 @@ include { validateParameters; paramsHelp } from 'plugin/nf-schema'
 if (params.help) {
     def logo = NfcoreTemplate.logo(workflow, params.monochrome_logs)
     def citation = '\n' + WorkflowMain.citation(workflow) + '\n'
-    def String command = "nextflow run ${workflow.manifest.name} --input samplesheet.csv --genome GRCh37 -profile docker"
+    def String command = "nextflow run ${workflow.manifest.name} --input inputsheet.csv -profile aws"
     log.info logo + paramsHelp(command) + citation + NfcoreTemplate.dashedLine(params.monochrome_logs)
     System.exit(0)
 }
@@ -40,14 +40,21 @@ WorkflowMain.initialise(workflow, params, log)
 */
 
 include { PHMWGS } from './workflows/phmwgs'
+include { PHMAUTOROUTINE } from './workflows/phmautoroutine'
 
 //
-// WORKFLOW: Run main qphire/phmwgs analysis pipeline
+// WORKFLOW: Run main routine analysis pipeline from FASTQ (input is isolate list)
 //
-workflow QPHIRE_PHMWGS {
+workflow PHMROUTINE {
     PHMWGS ()
 }
 
+//
+// WORKFLOW: Run main routine analysis pipeline from FASTQ (input is isolate list)
+//
+workflow PHMAUTO {
+    PHMAUTOROUTINE ()
+}
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN ALL WORKFLOWS
@@ -59,7 +66,8 @@ workflow QPHIRE_PHMWGS {
 // See: https://github.com/nf-core/rnaseq/issues/619
 //
 workflow {
-    QPHIRE_PHMWGS ()
+    //PHMROUTINE ()
+    PHMAUTO()
 }
 
 /*

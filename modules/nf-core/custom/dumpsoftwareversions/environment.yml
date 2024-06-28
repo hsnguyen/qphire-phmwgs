@@ -1,7 +1,7 @@
-name: spades
+name: custom_dumpsoftwareversions
 channels:
   - conda-forge
   - bioconda
   - defaults
 dependencies:
-  - bioconda::spades=4.0.0
+  - bioconda::multiqc=1.20

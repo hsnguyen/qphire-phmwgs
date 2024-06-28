@@ -1,0 +1,36 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://raw.githubusercontent.com/qphire/phmwgs/master/assets/schema_flowcells_input.json",
+    "title": "qphire/phmautoroutine pipeline - params.input schema",
+    "description": "Schema for the file provided with params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "description": "Illumina experiemnt runID must be provided and cannot contain spaces",
+                "meta": "id",
+                "default": "test"
+            },
+            "lane": {
+                "type": "integer",
+                "meta": "lane",
+                "description": "Flowcell lane number"
+            },
+            "samplesheet": {
+                "type": "string",
+                "pattern": "^.*.csv$",
+                "format": "file-path",
+                "errorMessage": "Illumina SampleSheet must be provided as a .csv file"
+            },
+            "flowcell": {
+                "type": "string",
+                "format": "file-path",
+                "errorMessage": "Folder or TAR containing bcl files must be provided."
+            }
+        },
+        "required": ["samplesheet", "flowcell"]
+    }
+}
