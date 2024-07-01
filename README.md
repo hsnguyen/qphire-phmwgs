@@ -45,7 +45,8 @@ Now, you can run the pipeline using:
 <!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
 
 ```bash
-nextflow run main.nf -c conf/phm_routine.config --input ~/test/qc/input.csv --krakendb /data/dbs/kraken_db/ -profile aws --awsProfile genfssphmdev -bucket-dir "s3://s3-gen-dev-data-fss/nextflow_cache" -name testchoi
+cd test
+nextflow run ../main.nf -c ../conf/phm_routine.config --input input.csv --krakendb /data/dbs/kraken_db/ -profile aws --awsProfile genfssphmdev -bucket-dir "s3://s3-gen-dev-data-fss/nextflow_cache" -name testchoi
 ```
 
 :::warning
